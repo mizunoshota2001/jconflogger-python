@@ -1,4 +1,14 @@
-[project]
+[tool.poetry]
 name = "jconflogger"
 version = "2024.10.25"
-include = ["jconflogger/*"]
+description = ""
+authors = ["mizunoshota2001 <95399151+mizunoshota2001@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
