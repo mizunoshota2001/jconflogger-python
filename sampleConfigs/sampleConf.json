@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "detailed": {
+            "format": "%(asctime)s [%(levelname)s] (%(filename)s | %(funcName)s | %(lineno)s) %(message)s"
+        }
+    },
+    "handlers": {
+        "streamHandler": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "detailed",
+            "stream": "ext://sys.stdout"
+        },
+        "fileHandler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "detailed",
+            "filename": "./.log",
+            "maxBytes": 10000,
+            "backupCount": 5
+        },
+        "emailHandler": {
+            "class": "logging.handlers.SMTPHandler",
+            "level": "ERROR",
+            "formatter": "detailed",
+            "mailhost": "localhost",
+            "fromaddr": "error@example.com",
+            "toaddrs": ["admin@example.com"],
+            "subject": "Critical Error Logged"
+        }
+    },
+    "loggers": {
+        "": {
+            "level": "DEBUG",
+            "handlers": ["streamHandler", "fileHandler", "emailHandler"]
+        }
+    }
+}
